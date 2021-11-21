@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
+=======
+body {
+  background: #F5F9F1;
+}
+>>>>>>> Stashed changes
 .nav .btn:hover {
   background-color: #E8EBF6;
   color: #0B2A97;
@@ -11,3 +17,12 @@
 .col-md-6 div {
   background-color: red;
 }
+<<<<<<< Updated upstream
+=======
+#col_sportsBlocks {
+  background-color: white;
+}
+#col_sportsBlocks:hover {
+  background-color: yellow;
+}
+>>>>>>> Stashed changes
