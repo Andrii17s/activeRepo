@@ -28,7 +28,13 @@ class Game {
           this.#currRangeStart,
           this.#currRangeEnd,
         );
-        this.#displayQuestion(this.#currAvgValue, this.#clickCount);
+        if (this.#clickCount === 11) {
+          this.#inputSource.querySelector(
+            '.display',
+          ).innerHTML = `<span class="success">Ти ж чесно граєш?</span>`;
+        } else {
+          this.#displayQuestion(this.#currAvgValue, this.#clickCount);
+        }
       }
 
       if (e.target.id === 'higher') {
@@ -38,7 +44,13 @@ class Game {
           this.#currRangeStart,
           this.#currRangeEnd,
         );
-        this.#displayQuestion(this.#currAvgValue, this.#clickCount);
+        if (this.#clickCount === 11) {
+          this.#inputSource.querySelector(
+            '.display',
+          ).innerHTML = `<span class="success">Ти ж чесно граєш?</span>`;
+        } else {
+          this.#displayQuestion(this.#currAvgValue, this.#clickCount);
+        }
       }
       if (e.target.id === 'correct') {
         document.querySelector('#lower').disabled = true;
@@ -48,7 +60,7 @@ class Game {
           '.display',
         ).innerHTML = `<span class="success">Комп\`ютер вгадав твоє число з ${
           this.#clickCount
-        } спроб!</span>`;
+        } спроб! Твоє число ${this.#currAvgValue}</span>`;
       }
 
       if (e.target.id === 'reset') {
@@ -63,7 +75,7 @@ class Game {
     this.#currAvgValue = undefined;
     this.#currRangeStart = 0;
     this.#currRangeEnd = 1000;
-    this.#inputSource.querySelector('.display').innerHTML = `<span class="success">Загадай випадкове число <br/> від 0 до 1000</span>`;
+    this.#inputSource.querySelector('.display').innerHTML = `<span class="success">Загадай випадкове число <br/> від 1 до 1000</span>`;
     this._toggleBtns(true);
   }
 
@@ -86,7 +98,7 @@ class Game {
       this.#captureInput();
     });
     this._toggleBtns(true);
-    this.#inputSource.querySelector('.display').innerHTML = `<span class="success">Загадай випадкове число <br/> від 0 до 1000</span>`;
+    this.#inputSource.querySelector('.display').innerHTML = `<span class="success">Загадай випадкове число <br/> від 1 до 1000</span>`;
   }
 }
 
