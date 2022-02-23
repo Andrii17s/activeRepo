@@ -13,45 +13,43 @@ class Game {
   #captureInput() {
     this.#inputSource.addEventListener('click', (e) => {
       if (this.#continueGame) {
-        if (e.target.id === 'start' && this.#clickCount === 0) {
-          e.preventDefault();
-          this.#clickCount++;
-          this.#currAvgValue = this.avgValueInRange(
-            this.#currRangeStart,
-            this.#currRangeEnd,
-          );
-          this.#displayQuestion(this.#currAvgValue, this.#clickCount);
-        }
+        if (this.#clickCount === 0) {
+          if (e.target.id === 'start') {
+            this.#clickCount++;
+            this.#currAvgValue = this.avgValueInRange(
+              this.#currRangeStart,
+              this.#currRangeEnd,
+            );
+            this.#displayQuestion(this.#currAvgValue, this.#clickCount);
+          }
+        } else {
+          if (e.target.id === 'lower') {
+            this.#clickCount++;
+            this.#currRangeEnd = this.#currAvgValue;
+            this.#currAvgValue = this.avgValueInRange(
+              this.#currRangeStart,
+              this.#currRangeEnd,
+            );
+            this.#displayQuestion(this.#currAvgValue, this.#clickCount);
+          }
 
-        if (e.target.id === 'lower') {
-          e.preventDefault();
-          this.#clickCount++;
-          this.#currRangeEnd = this.#currAvgValue;
-          this.#currAvgValue = this.avgValueInRange(
-            this.#currRangeStart,
-            this.#currRangeEnd,
-          );
-          this.#displayQuestion(this.#currAvgValue, this.#clickCount);
-        }
-
-        if (e.target.id === 'higher') {
-          e.preventDefault();
-          this.#clickCount++;
-          this.#currRangeStart = this.#currAvgValue;
-          this.#currAvgValue = this.avgValueInRange(
-            this.#currRangeStart,
-            this.#currRangeEnd,
-          );
-          this.#displayQuestion(this.#currAvgValue, this.#clickCount);
-        }
-        if (e.target.id === 'correct') {
-          e.preventDefault();
-          this.#continueGame = false;
-          this.#inputSource.querySelector(
-            '.display',
-          ).innerHTML = `<span class="success">Комп\`ютер вгадав ваше число з ${
-            this.#clickCount
-          } спроб!</span>`;
+          if (e.target.id === 'higher') {
+            this.#clickCount++;
+            this.#currRangeStart = this.#currAvgValue;
+            this.#currAvgValue = this.avgValueInRange(
+              this.#currRangeStart,
+              this.#currRangeEnd,
+            );
+            this.#displayQuestion(this.#currAvgValue, this.#clickCount);
+          }
+          if (e.target.id === 'correct') {
+            this.#continueGame = false;
+            this.#inputSource.querySelector(
+              '.display',
+            ).innerHTML = `<span class="success">Комп\`ютер вгадав ваше число з ${
+              this.#clickCount
+            } спроб!</span>`;
+          }
         }
       }
 
